@@ -49,8 +49,11 @@ def str_to_num(X):
 
 
 def main():
-	input_nums = raw_input("Give me some comma separated numbers, bro.\n")
+	input_nums = raw_input("Give me at least 6 comma separated numbers.\n")
 	X = re.split(',', input_nums.replace(" ", ""))
+	while len(X) < 6:
+		input_nums = raw_input("Give me at least 6 comma separated numbers, not less.\n")
+		X = re.split(',', input_nums.replace(" ", ""))
 	X = str_to_num(X)
 
 	for i in range(2):
@@ -58,7 +61,7 @@ def main():
 		del(X[max_i])
 		min_i = argmin(X)
 		del(X[min_i])
-	print std(X)
+	print "The standard deviation is", std(X)
 
 if __name__ == "__main__":
 	main()
